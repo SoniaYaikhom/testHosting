@@ -1,175 +1,1493 @@
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="common/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="home/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+    <!-- Carousel Slider .mim.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <!-- Carousel Slider .theme.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+	<!-- <link href="temp/css/admin-2.min.css" rel="stylesheet"> -->
+	<link href="temp/css/dashboard.css" rel="stylesheet"> 
+	<link rel="stylesheet" href="common/toast/css/toastr.min.css">
+	<link rel="stylesheet" href="common/css/jquery-confirm.min.css">
+	<link rel="stylesheet" href="temp/css/owl.carousel.css">
+	<link rel="stylesheet" href="temp/css/owl.theme.css">
+	<link rel="stylesheet" href="temp/css/style.css">
+	<link rel="stylesheet" href="leaflet/leaflet.css" />
+	<link rel="stylesheet" href="leaflet/esri-leaflet-geocoder.css" />
+	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
-
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
-
-.container {
-  padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
+    <title>JK-PWD Online Management System: Login</title>
 </head>
+
 <body>
-
-<h2>Login Form</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+    <div class="container-fluid">
+        <header class="d-flex align-items-center py-2">
+            <div class="home_logo">
+                <img src="./assests//Home-logo.jpg" alt="...">
+            </div>
+            <div class="d-inline-block mx-4">
+                <p class="h4 headTitle m-0">JKPW-Online Management, Monitoring & Accounting System</p>
+            </div>
+        </header>
     </div>
+    <!-- --------------------------------------------Navigation Bar----------------------------------------------------------------- -->
+    <nav class="navbar navbar-expand-lg navbar-light my-2 fs-bolder">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav  mb-2 mb-lg-0 navflx1" style="width: 90%;">
+                    <li class="nav-item">
+                        <a class="nav-link  text-light active" aria-current="page" href="#" onclick="openDiv(1)">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownInfra" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            About Us
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href=".#" onclick="openDiv(2)">Organizational Chart</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="openDiv(3)">Area of Focus</a></li>
+                            <li><a class="dropdown-item" target="_blank" href="whoIswho.jsp">Who is who</a></li>
+                        </ul>                       
+                    </li>
 
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+                    <!-- ----------------------------------------HR dropdown----------------------------------------- -->
+                    <li class="nav-item dropdown isMegaDropdown">
+                        <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownHR" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Human Resource
+                        </a>
+                        <ul class="dropdown-menu megaDropdown" role="menu" aria-labelledby="navbarDropdown">
+                            <div class="row mx-2 px-2">
+                                <div class="col">
+                                    <li>
+                                        <h2 class="dropdown-header fs-5">Engineers</h2>
+                                    </li>
+                                    <dl class="px-3">
+                                        <dt>Civil</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_dcw');">DCW</a>
+                                        </dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_ce');">Chief Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_se');">Superintending Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_ee');">Executive Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_ro');">Research Officer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_aee');">Assistant Executive Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_dro');">Dy. Research Officer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_ae');">Assistant Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_aro');">Assistant Research Officer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_civil_je');">Junior Engineer</a></dd>
+                                        
+                                        <dt>Mechanical</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_mech_ce');">Chief Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_mech_se');">Superintending Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_mech_ee');">Executive Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_mech_aee');">Assistant Executive Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_mech_ae');">Assistant Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_mech_je');">Junior Engineer</a></dd>
+                                       
+                                        <dt>Electrical</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_elec_ee');">Executive Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_elec_aee');">Assistant Executive Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_elec_ae');">Assistant Engineer</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_elec_je');">Junior Engineer</a></dd>
+                                       
+                                    </dl>
+                                </div>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+                                <div class="col">
+                                    <li>
+                                        <h2 class="dropdown-header fs-5 text-primary">Other Staff</h2>
+                                    </li>
+                                    <dl class="px-3">
+                                        <dt class="text-light">......</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_all_deput');">Deputation from other Dept.</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_all_minis');">Ministerial Staff</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_all_tech');">Technical Staff</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('hr_all_class4');">Class IV or Equivalent</a></dd>
+                                    </dl>
+                                </div>
+
+                                <div class="col">
+                                    <li>
+                                        <h2 class="dropdown-header fs-5">Contractors</h2>
+                                    </li>
+                                    <dl class="px-3">
+                                        <dt>Active</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_act_classA');">Class A</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_act_classB');">Class B</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_act_classC');">Class C</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_act_classD');">Class D</a></dd>
+                                        <dt>Inactive</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_inact_classA');">Class A</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_inact_classB');">Class B</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_inact_classC');">Class C</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_inact_classD');">Class D</a></dd>
+                                        <dt>Barred</dt>
+                                       	<dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_barred_classA');">Class A</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_barred_classB');">Class B</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_barred_classC');">Class C</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('cont_barred_classD');">Class D</a></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!-- ----------------------------------------INFRA dropdown----------------------------------------- -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownInfra" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Infrastructure
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="getPWDDate('infra_brdg_all');">Bridge</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="getPWDDate('infra_bldg_all');">Building</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="getPWDDate('infra_road_all');">Road</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- ----------------------------------------Projects dropdown----------------------------------------- -->
+                    <li class="nav-item dropdown isMegaDropdown">
+                        <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownProjects" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu megaDropdown" role="menu" aria-labelledby="navbarDropdown">
+                            <div class="row mx-2 px-2">
+                                <div class="col">
+                                    <li>
+                                        <h2 class="dropdown-header fs-5">Proposals</h2>
+                                    </li>
+                                    <dl class="px-3">
+                                        <dt>Bridges</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_brdgProposal_sp');">Sanctioned Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_brdgProposal_pp');">Pending Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_brdgProposal_nt');">New Technology Projects</a></dd>
+                                        <dt>Buildings</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_bldgProposal_sp');">Sanctioned Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_bldgProposal_pp');">Pending Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_bldgProposal_nt');">New Technology Projects</a></dd>
+                                        <dt>Road</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_roadProposal_sp');">Sanctioned Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_roadProposal_pp');">Pending Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_roadProposal_nt');">New Technology Projects</a></dd>                                        
+                                    </dl>
+                                    
+                                    <dl class="px-3">
+                                    	<a class="dropdown-item" href="#" onclick="getPWDDate('proj_all_all');">View All Projects</a>
+                                    </dl>
+                                    
+                                </div>
+
+                                <div class="col">
+                                    <li>
+                                        <h2 class="dropdown-header fs-5">Awarded Works</h2>
+                                    </li>
+                                    <dl class="px-3">
+                                        <dt>Bridges</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_brdgAwarded_cp');">Completed Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_brdgAwarded_op');">Ongoing Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_brdgAwarded_ap');">Awarded Projects</a></dd>
+                                        <dt>Buildings</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_bldgAwarded_cp');">Completed Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_bldgAwarded_op');">Ongoing Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_bldgAwarded_ap');">Awarded Projects</a></dd>
+                                       	<dt>Road</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_roadAwarded_cp');">Completed Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_roadAwarded_op');">Ongoing Projects</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_roadAwarded_ap');">Awarded Projects</a></dd>
+                                    </dl>
+                                </div>
+
+                                <div class="col">
+                                    <li>
+                                        <h2 class="dropdown-header fs-5">Maintenance</h2>
+                                    </li>
+                                    <dl class="px-3">
+                                        <dt>Bridges</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_mainbridge_dlp');">DLP</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_mainbridge_ndlp');">Non DLP</a></dd>
+                                        <dd><a class="dropdown-item text-light disabled" href="#">....</a></dd>
+                                        <dt>Buildings</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_mainbldng_dlp');">DLP</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_mainbldng_ndlp');">Non DLP</a></dd>
+                                        <dd><a class="dropdown-item text-light disabled" href="#">....</a></dd>
+                                        <dt>Road</dt>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_mainroad_dlp');">DLP</a></dd>
+                                        <dd><a class="dropdown-item" href="#" onclick="getPWDDate('proj_mainroad_ndlp');">Non DLP</a></dd>
+                                        <dd><a class="dropdown-item text-light disabled" href="#">....</a></dd>
+                                    </dl>
+                                </div>
+
+                            </div>
+                        </ul>
+
+
+                    </li>
+                    <!-- ----------------------------------------Reports dropdown----------------------------------------- -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownReports" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Reports
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item">Quality Reports &raquo; </a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" onclick="getQualityData('bridge');" target="_blank">QualityReportBridge</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="getQualityData('building');" target="_blank">QualityReportBuilding</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="getQualityData('quality');" target="_blank">QualityReportDetails</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="getQualityData('road');" target="_blank">QualityReportRoad</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="<s:url action="roadSafetyAuditReportData"/>" target="_blank">Road safety Reports</a></li>
+                            <li><a class="dropdown-item" href="<s:url action="roadAccidentReportData"/>" target="_blank">Road Accident Reports</a></li>
+                            <li><a class="dropdown-item" href="#">Maintenance Reports</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="getPWDDate('com_feedback_reports');">Feedback Reports</a></li>
+                            <li><a class="dropdown-item" href="#">New Technology</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">Reports</a></li> -->
+                        </ul>
+                    </li>
+                    <!-- ---------------------------------------- Citizen's dropDown ----------------------------------------- -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownCitizen" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Citizen's Charter
+                        </a>
+                        <dl class="dropdown-menu px-3 citizenDrp" aria-labelledby="navbarDropdown">
+                            <dt>RTI</dt>
+                            <dd><a class="dropdown-item" href="#">Appellants</a></dd>
+                            <dt>Grievances</dt>
+                            <dd><a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target=".bd-example-modal-lg" style="color: ;">Register Grievance</a></dd>
+                            <dd><a class="dropdown-item" href="javascript:void(0)" id="trackComplaint" style="color: ;">Track Grievance</a></dd>
+                            <dt>Permissions</dt>
+                           <!--  <dd><a class="dropdown-item" href="#" onclick="getRoadCuttingForm();" target="_blank">PWD Grant of Road Cutting</a></dd> -->
+                            <dd><a class="dropdown-item" href="JKPWDOMS-SafetyAudit/upload/roadCutting/roadCutting.pdf"  target="_blank">Guideline for Road Cutting</a></dd>
+                            <dd><a class="dropdown-item" href="openRoadCutPermission.html"  target="_blank">Road Cutting Permission</a></dd>
+                             <dd><a class="dropdown-item" href="javascript:void(0)" id="trackRoadCutPermission" style="color: ;">Track Road Cutting Permission</a></dd>
+                            <dt>Feedback</dt>
+                            <dd><a href="javascript:void(0)" data-toggle="modal" data-target="#feedbackModal" class="dropdown-item" >Feedback for improvement</a></dd>
+                            <dt>Contact Us</dt>
+                            <dd><a class="dropdown-item" href="#">Contact Details</a></dd>
+                        </dl>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#" onclick="getPWDDate('ord_all_all');">Orders &amp; Circulars</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav py-4 pull-right py-md-0">
+					<li class="nav-item pl-4 pl-md-0 mr-2 ml-md-4">
+						<a class="nav-link text-light font-weight-bold" href="<s:url action='goBackToLogin'/>">
+						<i class="fa fa-user" aria-hidden="true"></i> Login</a>
+					</li>
+				</ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid main">
+    
+    	<!-- START OF MAIN CONTENT -->
+    	<div id="1">
+    	
+        <div class="row ">
+            <div class="col-sm-12 col-md-8 mt-1">
+            <!-- Image Slider -->
+                <div id="carouselExampleCaptions" class="carousel slide border rounded" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./assests/other-images/pic6.jpeg" class="d-block w-100 rounded" alt="..."
+                                style="height: 51vh;">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Bridge Construction</h5>
+                                <p>Public Works Department, Government of Jammu & Kashmir.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assests/other-images/pic1.jpeg" class="d-block w-100 rounded" alt="..."
+                                style="height: 51vh;">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Road Construction</h5>
+                                <p>Public Works Department, Government of Jammu & Kashmir.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./assests/other-images/pic2.jpeg" class="d-block w-100 rounded" alt="..."
+                                style="height: 51vh;">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Road Construction</h5>
+                                <p>Public Works Department, Government of Jammu & Kashmir.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+
+                <div class="row ">
+                    <div class="col-sm-12 col-md-3">
+                        <div class="flx">
+                            <div class="card text-light bg-success ">
+                                <div class="card-body text-center p-2">
+                                    <h5 class="card-title" id="existingBridgeCount" >0</h5>
+                                    <p class="card-text mb-0">Existing number of Bridges.</p>
+                                    <a href="#" onclick="getPWDDate('infra_brdg_all');" target="" class="fltMore">more</a>
+                                </div>
+                            </div>
+                            <div class="card text-white bg-info ">
+                                <div class="card-body text-center p-2">
+                                    <h5 class="card-title" id="existingBuildingCount">0</h5>
+                                    <p class="card-text mb-0">Existing number of Buildings.</p>
+                                    <a href="#" onclick="getPWDDate('infra_bldg_all');" target="" class="fltMore">more</a>
+                                </div>
+                            </div>
+                            <div class="card text-white bg-danger ">
+                                <div class="card-body text-center p-2">
+                                    <h5 class="card-title" id="existingRoadCount">0<sup>km</sup></h5>
+                                    <p class="card-text mb-0">Existing Road Length</p>
+                                    <a href="#" onclick="getPWDDate('infra_road_all');" target="" class="fltMore">more</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-9">
+                        <div class="bg-warning text-center mt-3 mb-3 prjHead">
+                            <h5 class="pb-1 fs-4">Projects</h5>
+                        </div>
+
+                        <div class="row g-1">
+                            <div class="col col-xs-6 col-md-4 prjCrds">
+                                <div class="card p-1" style="background-color: rgb(212, 169, 126);">
+                                    <div class="card-body text-center py-1">
+
+                                        <table class="table table-sm table-borderless tableInfor mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="fs-5" colspan="2">Bridges</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Sanctioned </td>
+                                                    <td><a class="prjLinks" href="#" onclick="getPWDDate('proj_brdgProposal_sp');" id="bridgeSanctioned">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alloted</td>
+                                                    <td><a class="prjLinks" href="#" onclick="getPWDDate('proj_brdgAwarded_ap');" id="bridgeAlloted">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ongoing</td>
+                                                    <td><a class="prjLinks" href="#" onclick="getPWDDate('proj_brdgAwarded_op');" id="bridgeOngoing">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Completed</td>
+                                                    <td><a class="prjLinks" href="#" onclick="getPWDDate('proj_brdgAwarded_cp');" id="bridgeCompleted">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Maintenance</td>
+                                                    <td><a class="prjLinks" href="#">0</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-xs-6 col-md-4 prjCrds">
+                                <div class="card p-1" style="background-color: rgb(213, 170, 232);">
+                                    <div class="card-body text-center py-1">
+
+                                        <table class="table table-sm table-borderless tableInfor mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="fs-5" colspan="2">Roads</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Sanctioned </td>
+                                                    <td><a class="prjLinks" href="#" onclick="getPWDDate('proj_roadProposal_sp');" id="roadSanctioned">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alloted</td>
+                                                    <td><a class="prjLinks" href="./Projects/Road/AwardedProjectsRoad.html" target="_blank" id="roadAlloted">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ongoing</td>
+                                                    <td><a class="prjLinks" href="./Projects/Road/OngoingProjectsRoad.html" target="_blank" id="roadOngoing">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Completed</td>
+                                                    <td><a class="prjLinks" href="./Projects/Road/CompletedProjectsRoad.html" target="_blank" id="roadCompleted">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Maintenance</td>
+                                                    <td><a class="prjLinks" href="#">0</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-md-4 prjCrds">
+                                <div class="card p-1" style="background-color: rgb(223, 118, 118);">
+                                    <div class="card-body text-center py-1">
+
+                                        <table class="table table-sm table-borderless tableInfor mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="fs-5" colspan="2">Buildings</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Sanctioned</td>
+                                                    <td><a class="prjLinks" href="./Projects/Building/SanctionedProjectsBuilding.html" target="_blank" id="buildingSanctioned">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alloted</td>
+                                                    <td><a class="prjLinks" href="./Projects/Building/AwardedProjectsBuilding.html" target="_blank" id="buildingAlloted">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ongoing</td>
+                                                    <td><a class="prjLinks" href="./Projects/Building/OngoingProjectsBuilding.html" target="_blank" id="buildingOngoing">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Completed</td>
+                                                    <td><a class="prjLinks" href="./Projects/Building/OngoingProjectsBuilding.html" target="_blank" id="buildingCompleted">0</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Maintenance</td>
+                                                    <td><a class="prjLinks" href="#" id="buildingMaintenance">0</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col prjCrds">
+                                <div class="card h-100" style="background-color: rgb(232, 110, 200);">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title" id="qualityControlReport">0</h5>
+                                        <p class="card-text">Quality Control Reports.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col prjCrds">
+                                <div class="card bg-success h-100" style="background-color: rgb(213, 170, 232);">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title" id="rodaSafetyReport">0</h5>
+                                        <p class="card-text">Road Safety Reports.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col prjCrds">
+                                <div class="card h-100" style="background-color: rgb(250, 130, 65);">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title" id="grievancesReaddressed">0</h5>
+                                        <p class="card-text">Grievances Redressed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1">
+                    <div class="card-header py-1" style="background-color: rgb(0, 61, 92);">
+                        <h5 class="card-title text-primary mb-0 text-light">J&K Public Works Department</h5>
+                    </div>
+                    <div class="card-body px-3 py-1">
+                        <p class="card-text">An effective communication network is essential not only to cater to
+                            the needs of travel and transport but also for socio-economic development. In case of
+                            J&K, the same is all the more important for promotion of tourism as well as horticulture
+                            fruit production.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="flx1">
+                    <div class="card impCard mt-1 mb-2">
+                        <img id="lgImg" src="./assests/LG-img.jpg"  class="card-img-top mx-auto my-2"
+                         style="width:200px;"   alt="..." />
+                        <div class="card-body text-center">
+                            <h5>Shri Manoj Sinha, Hon'ble Lieutenant Governor, J&K</h5>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="card impCard py-1 mb-3" style="background-color: #3491d0">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="./assests/SHK-IAS-img.jpg" class="rounded img-thumbnail" style="width: 8vw;" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title text-warning">Message </h4>
+                                    <h6 class="card-title fs-5">Sh. Shailendra Kumar (IAS) </h6>
+                                    <p class="card-text">Principal Secretary to the Government.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <div class="myCard my-2">                                                    
+                        <div class="myImg">
+                            <img src="./assests/SHK-IAS-img.jpg" class="rounded img-thumbnail" 
+                                    alt="...">
+                        </div>                                                    
+                        <div class="content py-1">                             
+                            <h5>Sh. Shailendra Kumar (IAS) </h5>
+                            <p>Principal Secretary to the Government.</p>
+                        </div>                                                                                                  
+                    </div>
+
+                    <!-- <div class="card impCard py-1 mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="./assests/DCW-img.jpg" class="rounded img-thumbnail" style="width: 8vw;" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sh. Sami Arif Yesvi</h5>
+                                    <p class="card-text">Development Commissioner (Works)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <div class="myCard my-2">
+                        <div class="myImg">
+                            <img src="./assests/DCW-img.jpg" class="rounded img-thumbnail" 
+                                    alt="...">
+                        </div>
+                        <div class="content py-2"> 
+                            <h5>Sh. Sami Arif Yesvi.</h5>
+                            <p class="card-text">Development Commissioner (Works)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card impCard mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Financial Details</h5>
+                            <p class="card-text m-0">Budget Allocated (2021-22): Not Available</p>
+                            <p class="card-text">Expenditure booked (2021-22): Not Available</p>
+                        </div>
+                    </div>
+					<div class="card shadow border border-info mb-2 ">
+						<div class="card-header"
+							style="background-color: rgb(0, 61, 92);">
+							<h6 class="m-0 font-weight-bold text-danger">
+								<i class="fa fa-bell"></i><span class="text-light"> Notification Message</span>
+							</h6>
+						</div>
+						<div class="card-body px-3 py-1" style="width: 100%; height: 15vh; overflow-y: scroll;">
+							<span class="messageListContent"></span>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+
         
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+        <!--------------------------------------------Photo/Video Gallery------------------------------------------------------->
+		<div class="row my-4">
+            <div class="col-lg-4 mb-2">
+                <div class="card shadow border border-info mb-4 updateCards">
+                    <div class="card-header cardHeaderGradient" style="background-color: rgb(0, 61, 92);">
+                        <h6 class="m-0 font-weight-bold text-danger">
+                            <i class="fas fa-images comn-i"></i><span class="text-light"> Photo Gallery</span>
+                        </h6>
+                    </div>
+
+                    <div class="card-body py-2 cardBodyGradient">
+                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner my-1">
+                                <div class="carousel-item active">
+                                    <img style="width: 100%; height: 27vh" src="./assests/other-images/pic1.jpeg" class="img-fluid img-thumbnail" alt="Image">
+                                </div>
+                                <div class="carousel-item">
+                                    <img style="width: 100%; height: 27vh" src="./assests/other-images/pic2.jpeg" class="img-fluid" alt="Image">
+                                </div>
+                                <div class="carousel-item">
+                                    <img style="width: 100%; height: 27vh" src="./assests/other-images/pic6.jpeg" class="img-fluid" alt="Image">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <h6 class="m-0 font-weight-bold">
+                            <a class="float-end" href="javascript:void(0)" onclick="openDiv(4)"><span>More Photos </span><i class="fas fa-angle-double-right"></i></a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <!-- -------------------------------------------Currently online NITs--------------------------------------------------- -->
+            <div class="col-lg-4 mb-2">
+                <div class="card shadow border border-info mb-4 updateCards">
+                    <div class="card-header cardHeaderGradient" style="background-color: rgb(0, 61, 92);">
+                        <h6 class="m-0 font-weight-bold text-danger">
+                            <i class="far fa-file-video comn-i"></i><span class="text-light"> Currently online
+                                NITs</span>
+                        </h6>
+                    </div>
+                    <div class="card-body py-3 cardBodyGradient">
+                    	<span class="onlineNITListContent"></span>
+                        <!-- <h6>Online NITs Data will be avaiable soon</h6> -->
+                    </div>
+                    <div class="card-footer">
+                        <h6 class="m-0 font-weight-bold text-right">
+                         <a class="float-end" href="javascript:void(0)" onclick="getPWDDate('nit_all_all')"><span>More </span>
+                                <i class="fas fa-angle-double-right"></i></a>
+                           <%--  <a class="float-end" href="javascript:void(0)" onclick="openDiv(5)"><span>More </span>
+                                <i class="fas fa-angle-double-right"></i></a> --%>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <!-- -------------------------------------------news and Updates-------------------------------------------------------- -->
+            <div class="col-lg-4 mb-2">
+                <div class="card shadow border border-info mb-4 updateCards">
+                    <div class="card-header cardHeaderGradient" style="background-color: rgb(0, 61, 92);">
+                        <h6 class="m-0 font-weight-bold text-danger">
+                            <i class="fa fa-file" aria-hidden="true"></i>
+                            <span class="text-light">News & Updates </span>
+                        </h6>
+                    </div>
+                    <div class="card-body py-3 cardBodyGradient" style="overflow-y: scroll;">
+                    <span class="newsandupdatesContent"></span>
+                        <!-- <ul>
+                        	<li><a href="#">New version of Tameer Tarraqi App released. You can update from Play Store.</a></li>
+							<li><a href="#">New version of Hamari sadak App released. You can update from Play Store.</a></li>
+                            <li><a href="#">JKPWDOMAS Web portal is live since 6th april 2021</a></li>
+                            <li><a href="#">All the Engineers are requested to upload their data on various modules of
+                                    the web portal</a></li> 
+                        </ul> -->
+                    </div>
+                    <div class="card-footer">
+                        <h6 class="m-0 font-weight-bold text-right">
+                          <a class="float-end" href="javascript:void(0)" onclick="getPWDDate('ord_all_all')"><span>More News </span><i
+                                    class="fas fa-angle-double-right"></i></a>
+                          <%--  <a class="float-end" href="javascript:void(0)" onclick="openDiv(6)"><span>More News </span><i
+                                   class="fas fa-angle-double-right"></i></a> --%>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+		</div>
+    	<!-- END of MAIN CONTENT -->
+		
+		
+		<!-- ORGANIZATION CHART -->
+		<div id="2" style="display: none; margin-top: 3%">
+			<h5 align="center">
+				<strong>ORGANIZATION CHART OF PUBLIC WORKS (R&B) DEPARTMENT</strong>
+			</h5>
+			<iframe src="home/pdf/org_chat.20.20.pdf" style="width: 100%; height: 700px;"></iframe>
+		</div>
+		<!-- ORGANIZATION CHART END --->
+	
+		<!-- AREA OF FOCUS ---->
+		<div id="3" style="display: none; margin-top: 3%">
+			<h4>
+				<strong>Areas of Focus is as under:</strong>
+			</h4>
+			<p>In order to achieve broad developmental goals in- line with the vision, the following strategy has been devised:-</p>
+				<ul>
+					<li>Sharp focus on coverage of un-connected habitations and upgradation of rural roads with a view to improve connectivity and market accessibility.</li>
+					<li>Address the issue of proper maintenance and repair of PMGSY roads after completion of the Defect Liability Period.</li>
+					<li>Construction and upgradation of arterial roads with focus on improvement of inter- district connectivity.</li>
+					<li>Construction, widening and upgradation o existing Major District Roads (MDR) and Other District Roads (ODR) from single lane to double lane and from two lane to four lane status.</li>
+					<li>Special emphasis on improvement and upgradation of city and town roads and leading to tourist destinations.</li>
+					<li>Focus on completion of existing ongoing bridge projects.</li>
+					<li>Safety audit of roads and bridges besides ensuring road safety measures on critical spots.</li>
+					<li>Plan for bypasses in capital cities of Jammu/ Srinagar and at District Headquarters to ease out traffic congestion.</li>
+					<li>Construction of critical roads, bridges and tunnels.</li>
+				</ul>
+		</div>
+		<!------------------------------------------------- AREA OF FOCUS END ------------------------------------------------>
+	
+		
+		<!-- PHOTO GALLERY -->
+		<div id="4" style="display: none; margin-top: 2%">
+			<h5 align="center">
+				<strong>PHOTO GALLERY</strong>
+			</h5>
+			
+			<div class="card-group">
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic1.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic2.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic3.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="card-group">
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic4.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic5.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic6.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+			</div>
+				
+			<div class="card-group">		
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic7.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic8.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic9.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+			</div>
+			
+			<div class="card-group">
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic10.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic11.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic12.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+			</div>
+			
+			<div class="card-group">			
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic13.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic14.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+				<div class="card bg-light shadow border border-warning">
+					<div class="card-body text-center">
+						<img src="common/img/pwd/pic15.jpeg" class="rounded" height="250px" width="100%" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END of PHOTO GALLERY -->
+		
+		<!-- TENDERS ---->
+		<div id="5" style="display: none; margin-top: 3%">
+			<h4>
+				<strong>Currently Online NITs:</strong>
+			</h4>
+			<span class="onlineNITListContent"></span>
+				<!-- <ul>
+					<li><a href="#">No NITs data available</a></li>
+				</ul> -->
+		</div>
+
+		<!-- NEWS AND UPDATES ---->
+		<div id="6" style="display: none; margin-top: 3%">
+			<h4>
+				<strong>News and Updates:</strong>
+			</h4>
+			<span class="newsandupdatesContent"></span>
+				<!-- <ul>
+					<li><a href="#">New version of Tameer Tarraqi App released. You can update from Play Store.</a></li>
+					<li><a href="#">New version of Hamari sadak App released. You can update from Play Store.</a></li>
+                    <li><a href="#">JKPWDOMAS Web portal is live since 6th april 2021</a></li>
+                    <li><a href="#">All the Engineers are requested to upload their data on various modules of
+                                    the web portal</a></li>
+				</ul> -->
+		</div>
+
+
+        <!-- Carousel multi -->
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="https://jkgad.nic.in/" target="_blank">
+                        <img src="./assests/gadgjk.png" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="https://www.cpwd.gov.in/" target="_blank">
+                        <img src="./assests/jakega.png" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="https://www.cpwd.gov.in/" target="_blank">
+                        <img src="./assests/cpwd.jpg" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="http://www.pmgsy-grris.nic.in/" target="_blank">
+                        <img src="./assests/pmgsy.png" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="http://omms.nic.in/" target="_blank">
+                        <img src="./assests/csir.jpg" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="http://www.irc.nic.in/" target="_blank">
+                        <img src="./assests/irc.jpg" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="https://geosadak-pmgsy.nic.in/" target="_blank">
+                        <img src="./assests/sadak.jpg" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="https://www.cpwd.gov.in/" target="_blank">
+                        <img src="./assests/cpwd.jpg" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="http://www.pmgsy-grris.nic.in/" target="_blank">
+                        <img src="./assests/pmgsy.png" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="http://omms.nic.in/" target="_blank">
+                        <img src="./assests/csir.jpg" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="http://www.irc.nic.in/" target="_blank">
+                        <img src="./assests/irc.jpg" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+
+                <div class="item border border-warning shadow rounded">
+                    <a href="https://geosadak-pmgsy.nic.in/" target="_blank">
+                        <img src="./assests/sadak.jpg" alt="" class="img-fluid img-thumbnail">
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
+    <footer class="pt-5 pb-0">
+        <div class="row text-light">
+            <div class="col-md-3 col-sm-6">
+                <ul>
+                    <h5>Important Links</h5>
+                    <li>
+                    	<a href="javascript:void(0)" id="contractorReg" role="button">
+						<font style="color: #FFF">Contractor Sign-up</font></a>
+						<img src="temp/css/common/img/pwd/new.gif" style="width: 40px" />
+					</li>
+                    <li><a href="javascript:void(0)" data-toggle="modal" data-target=".bd-example-modal-lg" style="color: #FFF;">Register Grievance</a></li>
+                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#feedbackModal" style="color: #FFF;">Register Feedback</a></li>
+                    <li><a href="javascript:void(0)" id="trackComplaint" style="color: #FFF;">Track Grievance</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.pwd.jk"  target="_blank" style="color: #FFF;">Download Tameer Tarraqi App</a></li>
+                    <li><a href="https://apps.mgov.gov.in/download/1533" target="_blank" style="color: #FFF;">Download Hamari Sadak App</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <ul>
+                    <h5>Documents</h5>
+                    <li><a href="home/pdf/JKEM2020.pdf"  style="color: white" target="_blank">JKPWD Engineering Manual 2020</a></li>
+                    <li><a href="home/pdf/JKPWDOMSManual.pdf" target="blank" style="color: #FFF;">JKPWDOMS user manual</a></li>
+                    <li>Hamari Sadak User Manual</li>
+                    <li>Rent Assessment</li>
+                    <li><a href="home/pdf/PMGSY_Guidelines.pdf" target="_blank" style="color: #FFF;">PMGSY Manual</a></li>
+                    <li><a href="home/pdf/plinth_area_rates_2021.pdf" target="_blank" style="color: #FFF;">Plinth Area Rates (2021)</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6">
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+                <ul>
+                    <h5>Follow Us</h5>
+                    <li>
+                        <a href="https://youtube.com/channel/UCG6ULRCXcsc-nAf0QCnIVQw" target="_blank">
+                            <i class="fab fa-youtube-square mx-2"></i><a href="https://www.youtube.com/channel/UCG6ULRCXcsc-nAf0QCnIVQw;" target="_blank" title="youtube">Youtube</a>
+                        </a>
+                    </li>
+                    <li>
+                        <!-- <a href="#" target="_blank"> -->
+                            <i class="fab fa-facebook-square mx-2"></i>Facebook
+                        <!-- </a> -->
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/WorksDepartment?s=09" target="_blank">
+                            <i class="fab fa-twitter-square mx-2"></i>Twitter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <h5>Contact Us</h5>
+                <p>Public Works Department, Government of Jammu & Kashmir</p>
+            </div>
+        </div>
+        <p class="text-center text-light mb-0">For your valuable Feedback & Suggestions, please email us to
+            <code>technicaladvisoryjkpwd@gmail.com</code>
+        </p>
+        <hr class="shadow-lg rounded border border-info m-0" />
+        <div class="row text-light mt-3">
+            <div class="col-8 ">
+                <p class="my-1 footText"> <i>Initiative by J&K PW(R&B) Dept (In consultation with JaKeGA & IT
+                        Department)</i> </p>
+            </div>
+            <div class="col-4">
+                <p class="float-end my-1 footText"><i>@ Copyright C-DAC 2020-21. All rights</i></p>
+            </div>
+        </div>
+    </footer>
 
+	<!--------------------------------------- Login Modal----------------------------------------------------------->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">Ã</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="login.html">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--------------------------------------- Login Modal End ----------------------------------------------------------->
+	<!--------------------------------------- Complaint Modal----------------------------------------------------------->
+	<div id="complaintModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="card text-center shadow-lg p-3 mb-5 bg-white rounded border-primary">
+					<div class="card-header bg-success">
+						<h3 class="font-weight-bold text-white">GRIEVANCE/FEEDBACK</h3>
+						<h6> Press <kbd>[Esc]</kbd> to close </h6>
+					</div>
+					<div class="card-body overflow-auto">
+						<h6 class="card-title text-small">We would love to hear your suggestions. complaints &amp; comments for us to improve</h6>
+						<form id="complaintForm" action="" class="was-validated" method="POST" enctype="multipart/form-data">
+							<div id="accordion">
+								<div class="card">
+									<div class="card-header text-left bg-dark" id="headingOne">
+										<button type="button" class="btn btn-outline link text-white font-weight-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											Please fill the following
+										</button>
+									</div>
+									<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+										<div class="card-body text-left">
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<label class="font-weight-bold">Your Name <span class="text-danger">*</span></label>
+													<input type="text" placeholder="Your name" name="name" id="nameComplaint" class="dbled name form-control form-control-sm" required autocomplete="off" />
+													<div class="invalid-feedback">Please provide name</div>
+												</div>
+												<div class="form-group col-md-6 col-sm-12">
+													<%-- <label>Contact Number <span class="text-danger">*</span></label>
+													<input type="tel" placeholder="Your contact number" name="phone" class="phone form-control form-control-sm" required autocomplete="off" />
+													<div class="invalid-feedback">Please provide contact number</div> --%>
+													<label class="font-weight-bold">Contact Number <span class="text-danger">*</span></label>
+													<div class="input-group input-group-sm mb-3">
+														<input type="tel" placeholder="Your contact number" maxlength="10" id="phoneComplaint" name="phone" class="dbled phone form-control form-control-sm" required autocomplete="off" />
+														<div class="input-group-append">
+															<button class="btn btn-outline-secondary btn-sm" type="button" id="sendOtp">SEND OTP</button>
+														</div>
+													</div>
+													<div class="invalid-feedback">Please provide contact number</div>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<label class="font-weight-bold">Enter OTP <span class="text-danger">*</span>&nbsp;<b id="resend" style="cursor: pointer;">Resend OTP</b></label>
+													<input type="number" placeholder="OTP" id="complaint_otp" name="OTP" class="OTP form-control form-control-sm" required autocomplete="off" />
+													<div class="invalid-feedback">Please enter OTP</div>
+													<div id="countdown"></div>
+													<%-- <label>Verify OTP <span class="text-danger">*</span></label>
+													<div class="input-group input-group-sm mb-3">
+														<input type="tel" placeholder="Enter OTP" name="phone" class="phone form-control form-control-sm" required autocomplete="off" />
+														<div class="input-group-append">
+															<button class="btn btn-outline-secondary" type="button">VERIFY OTP</button>
+														</div>
+													</div>
+													<div class="invalid-feedback">Please provide contact number</div> --%>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<button type="button" class="btn btn-block btn-outline-primary btn-sm" id="verifyOtp">VERIFY OTP</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card">
+									<div class="card-header text-left bg-dark" id="headingTwo">
+										<button type="button" id="complaintInformation" class="btn btn-link collapsed btn btn-outline link text-white font-weight-bold" aria-expanded="false" aria-controls="collapseTwo">
+											Complaint information
+										</button>
+									</div>
+									<div id="collapseTwo" class="collapse active"
+										aria-labelledby="headingTwo" data-parent="#accordion">
+										<div class="card-body">
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-4 col-sm-12">
+													<label class="font-weight-bold">Your Email <span class="text-danger">*</span></label>
+													<input type="email" placeholder="Your email"  id="emailComplaint" name="email" class="email form-control form-control-sm" autocomplete="off" required />
+													<div class="invalid-feedback">Please provide email</div>
+												</div>
+												<div class="form-group col-md-8 col-sm-12">
+													<label class="font-weight-bold">Your Address <span class="text-danger">*</span></label>
+													<textarea placeholder="Your address" id="addressComplaint" name="address" rows="1" class="address form-control form-control-sm" required ></textarea>
+													<div class="invalid-feedback">Please provide address</div>
+												</div>
+											</div>
+											
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<label class="font-weight-bold">Choose District<span class="text-danger">*</span></label>
+													<select class="district custom-select form-control custom-select-sm " name="districtId" id="districtList" required>
+														<option>CHOOSE DISTRICT</option>
+													</select>
+												</div>
+												<div class="form-group col-md-6 col-sm-12">
+													<label class="font-weight-bold">Choose Block<span class="text-danger">*</span></label>
+													<select class="district custom-select form-control custom-select-sm " name="blockId" id="blockList" required>
+														<option>CHOOSE BLOCK</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<label class="font-weight-bold">Choose Infrastructure Type<span class="text-danger">*</span></label>
+													<select name="infrastructureTypeId" id="infrastructureTypeIdComplaint" class=" form-control assetType custom-select custom-select-sm">
+														<option value="1">Road</option>
+														<option value="2">Building</option>
+														<option value="3">Bridge</option>
+													</select>
+												</div>
+												<div class="form-group col-md-6 col-sm-12" id="InfraStructureGroup">
+													<label class="font-weight-bold">Choose Infrastructure<span class="text-danger">*</span></label>
+													<select class="road custom-select required custom-select-sm form-control" name="infrastructureRoadId" id="roadList">
+														<option value="-1">CHOOSE ROAD</option>
+													</select>
+													<select class="building custom-select custom-select-sm required form-control" name="infrastructureBuildingId" id="buildingList" style="display: none;">
+														<option value="-1">CHOOSE BUILDING</option>
+													</select>
+													<select class="bridge custom-select custom-select-sm required form-control" name="infrastructureBridgeId" id="bridgeList" style="display: none;" >
+														<option value="-1">CHOOSE BRIDGE</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-12 col-sm-12">
+													<label class="font-weight-bold">Choose Complaint Type<span class="text-danger">*</span></label>
+													<select name="typeOfComplaintId" id="typeOfComplaintId" class="form-control assetType custom-select custom-select-sm" required>
+														<option value="-1">CHOOSE COMPLAINT TYPE</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-12 col-sm-12">
+													<label class="font-weight-bold">Your Complaint <span class="text-danger">*</span></label>
+													<textarea placeholder="Your complaint" id="complaintDetails" name="complaint" rows="4" class="complaint form-control form-control-sm" required autocomplete="off"></textarea>
+													<div class="invalid-feedback">Your complaint (Max limit 2000)</div>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-12 col-sm-12">
+													<div class="custom-file w-100">
+														<input type="file" class="geoTaggedImage custom-file-input form-control" name="complaintImage" id="complaintImage" accept="image/*" required>
+														<label class="custom-file-label" for="validatedCustomFile">Choose Geo-Tagged Image file</label>
+													</div>
+													Only JPG/JPEG/PNG. Max. 200 KB.
+												</div>
+											</div>
+											<!-- <hr data-content="OR" class="hr-text"> -->
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-12 col-sm-12">
+													<label class="font-weight-bold">Marked Location <span class="text-danger">*</span></label>
+													<div class="input-group input-group-sm mb-3">
+														<input type="text" placeholder="Marked Location" id="complaintLocation" name="location" class="locationTextField form-control form-control-sm" required autocomplete="off" readonly="readonly" />
+														<div class="input-group-append">
+															<button class="btn btn-outline-secondary" type="button" id="getMapInfo">
+																<i class="fa fa-map-marker text-danger" aria-hidden="true"></i> MARK LOCATION
+															</button>
+														</div>
+													</div>
+													<div class="invalid-feedback">Please mark location on map</div>
+												</div>
+											</div>
+
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<button type="button" class="btn btn-block btn-outline-primary btn-sm" id="complaint-save">SUBMIT COMPLAINT</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--------------------------------------- Complaint Modal End ----------------------------------------------------------->
+<!--------------------------------------- Feedback Modal----------------------------------------------------------->
+	<div id="feedbackModal" class="modal fade bd-example1-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="card text-center shadow-lg p-3 mb-5 bg-white rounded border-primary">
+					<div class="card-header bg-success">
+						<h3 class="font-weight-bold text-white">FEEDBACK</h3>
+						<h6> Press <kbd>[Esc]</kbd> to close </h6>
+					</div>
+					<div class="card-body overflow-auto">
+						<h6 class="card-title text-small">We would love to hear your suggestions. Feedback for us to improve</h6>
+						<form id="feedbackForm" action="" class="was-validated" method="POST" enctype="multipart/form-data">
+							<div id="accordion">
+								<div class="card">
+									<div class="card-header text-left bg-dark" id="headingOne">
+										<button type="button" class="btn btn-outline link text-white font-weight-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											Please fill the following
+										</button>
+									</div>
+									<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+										<div class="card-body text-left">
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<label class="font-weight-bold">Your Name <span class="text-danger">*</span></label>
+													<input type="text" placeholder="Your name" name="name" id="nameFeedback" class="dbled name form-control form-control-sm" required autocomplete="off" />
+													<div class="invalid-feedback">Please provide name</div>
+												</div>
+												<div class="form-group col-md-6 col-sm-12">
+													<label class="font-weight-bold">Contact Number <span class="text-danger">*</span></label>
+													<div class="input-group input-group-sm mb-3">
+														<input type="tel" placeholder="Your contact number" maxlength="10" id="phoneFeedback" name="phone" class="dbled phone form-control form-control-sm" required autocomplete="off" />
+														<div class="input-group-append">
+															<button class="btn btn-outline-secondary btn-sm" type="button" id="sendFeedbackOtp">SEND OTP</button>
+														</div>
+													</div>
+													<div class="invalid-feedback">Please provide contact number</div>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<label class="font-weight-bold">Enter OTP <span class="text-danger">*</span>&nbsp;<b id="resendFeedbackOtp" style="cursor: pointer;">Resend OTP</b></label>
+													<input type="number" placeholder="OTP" id="feedback_otp" name="OTP" class="OTP form-control form-control-sm" required autocomplete="off" />
+													<div class="invalid-feedback">Please enter OTP</div>
+													<div id="countdown"></div>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<button type="button" class="btn btn-block btn-outline-primary btn-sm" id="verifyFeedbackOtp">VERIFY OTP</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card">
+									<div class="card-header text-left bg-dark" id="headingTwo">
+										<button type="button" id="feedbackInformation" class="btn btn-link collapsed btn btn-outline link text-white font-weight-bold" aria-expanded="false" aria-controls="feedbackInfo">
+											Feedback Information
+										</button>
+									</div>
+									<div id="feedbackInfo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+										<div class="card-body">
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-4 col-sm-12">
+													<label class="font-weight-bold">Your Email <span class="text-danger">*</span></label>
+													<input type="email" placeholder="Your email" id="emailFeedback" name="email" class="emailFeedback form-control form-control-sm" autocomplete="off" required />
+													<div class="invalid-feedback">Please provide email</div>
+												</div>
+												<div class="form-group col-md-8 col-sm-12">
+													<label class="font-weight-bold">Your Address <span class="text-danger">*</span></label>
+													<textarea placeholder="Your address" id="addressFeedback" name="address" rows="1" class="addressFeedback form-control form-control-sm" required ></textarea>
+													<div class="invalid-feedback">Please provide address</div>
+												</div>
+											</div>
+											
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-10 col-sm-12">
+													<label class="font-weight-bold">Your Feedback <span class="text-danger">*</span></label>
+													<textarea placeholder="Your Feedback" id="feedbackDetails" name="complaint" rows="4" class="feedback form-control form-control-sm" required ></textarea>
+													<div class="invalid-feedback">Your Feedback (Max limit 2000)</div>
+												</div>
+											</div>
+											<div class="form-row d-flex justify-content-center">
+												<div class="form-group col-md-6 col-sm-12">
+													<button type="button" class="btn btn-block btn-outline-primary btn-sm" id="feedback-save">SUBMIT FEEDBACK</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--------------------------------------- Feedback Modal End ----------------------------------------------------------->
+
+<!------------------------------------------------ Logout Modal---------------------------------------------------------->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h5 class="modal-title text-center" id="exampleModalLabel">	LOGIN |<strong class="text-primary text-uppercase">JKPWDOMS</strong>
+					</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">Ã</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row no-gutters d-flex justify-content-center">
+						<div class="col-lg-6-offset-lg-3">
+							<div class="form-outer text-center align-items-center">
+								<div class="form-inner">
+									<s:form method="post" action="logMeIn" id="logMeInForm" class="text-left form-validate">
+										<div class="form-group-material">
+											<input id="login-username" type="text" name="loginUsername" class="input-material" autocomplete="off" />
+											<label for="login-username" class="label-material"><i class="fa fa-user" aria-hidden="true"></i>Username</label>
+										</div>
+										<div class="form-group-material">
+											<input id="login-password" type="password" name="loginPassword" class="input-material" autocomplete="off" />
+											<label for="login-password" class="label-material"><i class="fa fa-lock" aria-hidden="true"></i>Password</label>
+										</div>
+										<div class="form-group-material none">
+											<input type="hidden" id="exceptionMessage" value="<s:property value="exception"/>" />
+											<input type="hidden" id="successMessage" value="<s:property value="message"/>" />
+										</div>
+										<div class="form-row mb-2">
+											<div class="col text-center">
+												<div id="question">Loading Captcha Question....</div>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="col">
+												<div class="form-group-material">
+													<input type="number" name="capcha" id="login-captcha" class="input-material" autocomplete="off">
+													<label for="login-captcha" class="label-material">
+													<i class="fa fa-reply" aria-hidden="true"></i>Answer</label>
+												</div>
+											</div>
+											<div class="col">
+												<button type="button" class="btn btn-block btn-outline-success" id="reloadCaptcha">
+													<span class="fa fa-refresh"></span> RELOAD
+												</button>
+											</div>
+										</div>
+										<div class="form-group text-center">
+											<button type="button" class="btn btn-block btn-primary" id="btn-login">Sign In</button>
+										</div>
+									</s:form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!------------------------------------------------ Logout Modal End ---------------------------------------------------------->
+	<div id="loading" class="d-none">
+		<h3>Loading page...</h3>
+		<img src="common/img/loader.gif" alt="loader">
+	</div>
+<!------------------------------------------------ Contractor Registration Modal ---------------------------------------------------------->
+	<div id="addContractorRegFormComponent" class="d-none">
+		<form id="contractorSignupForm" method="post" enctype="multipart/form-data">
+			<div class="container-fluid">
+				<div class="form-group mt-4">
+					<s:hidden id="_ehrmsdata" name="_ehrmsdata" />
+					<input type="hidden" name="_ehrmsdata" value="" id="_ehrmsdata"/>
+					<!-- <input type="hidden" id="userIdExist" value="">
+					<input type="hidden" id="emailExist" value=""> -->
+					<label for="fullName" class="font-weight-bold">User ID<span class="text-danger">*</span></label>
+					<input type="text" class="form-control {userId}" id="userId" placeholder="Enter user id" >
+					<%-- <small id="userIdMsg"></small> --%>
+				</div>
+				<div class="form-group-sm">
+					<label for="email" class="font-weight-bold">Email ID<span class="text-danger">*</span></label>
+					<input type="email" class="form-control {email}" id="email" aria-describedby="emailHelp" placeholder="Enter email" >
+				</div>
+				<div class="form-group">
+					<label for="mobileNumber" class="font-weight-bold">Mobile Number<span class="text-danger">*</span></label>
+					<div class="input-group input-group-sm mb-3">
+						<input type="text" class="form-control {mobileNumber}" id="mobileNumber" maxlength="10" placeholder="Enter mobile number" onkeyup="isDigitOnKeyUp(this)" >
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="button" id="sendOtp1">SEND OTP</button>
+						</div>
+					</div>
+					<div class="invalid-feedback">Please provide contact number</div>
+				</div>
+				<div class="form-group-sm">
+					<label><b>Enter OTP <span class="text-danger">*</span></b>  &nbsp;<span class="text-primary" id="resendOTPContractor" style="cursor: pointer;">Resend OTP</span>
+					</label> 
+					<input type="number" placeholder="OTP" id="contractor_otp" name="OTP" class="OTP form-control form-control-sm {otp)" required autocomplete="off" />
+					<div class="invalid-feedback">Please enter OTP</div>
+				</div>
+				<div class="form-group-sm">
+					<label for="password" class="font-weight-bold">Password<span class="text-danger">*</span></label>
+					<input type="password" class="form-control {password}" id="password" placeholder="Password">
+				</div>
+				<div class="form-group-sm">
+					<label for="password1" class="font-weight-bold">Confirm Password<span class="text-danger">*</span></label>
+					<input type="password" class="form-control {password1}" id="password1" placeholder="Confirm password">
+				</div>
+				<div class="form-group-sm">
+					<label for="characterCertificate" class="font-weight-bold">Character Certificate<span class="text-danger">*</span> (Only PDF, Max Size 200 KB) </label>
+					<input type="file" class="form-control {character}" id="characterCertificate" name="characterCertificate" placeholder="Choose File" accept="application/pdf"/>
+					NOTE: Character  certificate to  be issued by an officer should not be below the rank of Superintending of Police of the District Concerned and verification from CID
+				</div>
+				
+			</div>
+		</form>
+	</div>
+	<!------------------------------------------------ Contractor Registration Modal End ---------------------------------------------------------->
+	
+	<div id="myModal" class="modal fade">
+	    <div class="modal-dialog modal-lg modal-dialog-centered">
+	        <div class="modal-content bg-color:red">
+	             <!-- Modal Header -->
+			      <div class="" style="text-align : center; margin-top: 2%; ">
+			        <h4 class="" style="color: blue; font-weight: bold; text-align: center;">WELCOME TO JKPWDOMS</h4>
+			        
+			      </div>
+					<!-- Test Modal -->
+			      <!-- Modal body -->
+			      <div class="modal-body" style="background-color: #4bb525; text-align: center; font-size: 15pt">
+			       <span>www.jkpwdoms.in is live now!!</span>
+			      </div>
+			
+			      <!-- Modal footer -->
+			      <div class=" text-center" style="margin-top: 8pt; margin-bottom: 8pt">
+			        <button type="button"  class="btn btn-primary btn-md" style="font-weight: bold; " data-dismiss="modal">Continue</button>
+			      </div>
+	        </div>
+	    </div>
+	</div>
+
+    <!-- All Sripts -->
+    <script src="common/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Carousel Slider.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
+    <script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+	<script src="leaflet/esri-leaflet-debug.js"></script>
+	<script src="leaflet/esri-leaflet-geocoder-debug.js"></script>
+	<script type="text/javascript" src="common/js/md5.js"></script>
+	<script type="text/javascript" src="common/js/sha256.js"></script>
+	<script type="text/javascript" src="common/toast/js/callToaster.js"></script>
+	<script type="text/javascript" src="common/toast/js/toastr.min.js"></script>
+	<script type="text/javascript" src="common/js/jquery-confirm.min.js"></script>
+	<script src="temp/sample/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="JKPWDOMS-ProjectAndTendering/js/exif.min.js"></script>
+	<script src="https://cdn.rawgit.com/hayeswise/Leaflet.PointInPolygon/v1.0.0/wise-leaflet-pip.js"></script>
+	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+	<script type="text/javascript" src="JKPWDOMS-ComplaintAndFeedback/js/geoJsonVars.js"></script>
+	<script type="text/javascript" src="home/js/roadCutPermission.js"></script>
+    <script type="text/javascript" src="JKPWDOMS-ComplaintAndFeedback/js/complaint.js"></script>
+	<script type="text/javascript" src="JKPWDOMS-ContractorManagement/js/contractorReg.js"></script>
+	<script type="text/javascript" src="home/js/pwddashboard.js"></script>
+	<script type="text/javascript" src="common/js/util.js"></script>
+	<script src="home/js/home.js"></script>
+    
+	
 </body>
+
 </html>
